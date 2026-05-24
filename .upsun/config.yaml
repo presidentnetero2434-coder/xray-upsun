@@ -1,0 +1,14 @@
+applications:
+  xray:
+    source:
+      root: "/"
+    type: "python:3.11"
+    web:
+      commands:
+        start: |
+          wget -q https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
+          unzip -q Xray-linux-64.zip
+          ./xray run -c config.json
+      locations:
+        /:
+          passthru: true
